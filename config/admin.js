@@ -7,10 +7,12 @@ module.exports = ({ env }) => {
     return (
       {
         auth: {
-          secret: env('ADMIN_JWT_SECRET'),
+          secret: CryptoJS.MD5('swatchBack2.0_auth', { outputLength: 16 }).toString(
+            CryptoJS.enc.Base64
+          ),
         },
         apiToken: {
-          salt: CryptoJS.MD5('swatchBack2.0', { outputLength: 16 }).toString(
+          salt: CryptoJS.MD5('swatchBack2.0_apitoken', { outputLength: 16 }).toString(
             CryptoJS.enc.Base64
           ),
         },

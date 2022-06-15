@@ -30,7 +30,7 @@ module.exports = ({ env }) => {{
             },
             'users-permissions': {
               config: {
-                jwtSecret: CryptoJS.MD5('swatchBack2.0', { outputLength: 16 }).toString(
+                jwtSecret: CryptoJS.MD5('swatchBack2.0_jwtsecret', { outputLength: 16 }).toString(
                   CryptoJS.enc.Base64
                 ),
               },
