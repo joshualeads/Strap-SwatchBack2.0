@@ -1,11 +1,5 @@
 module.exports = ({ env }) => {{
-  
-    let crypto;
-    try {
-      crypto = require('node:crypto');
-    } catch (err) {
-      console.log('crypto support is disabled!');
-    }
+    var CryptoJS = require('crypto-js');
 
     if(env('NODE_ENV') === 'production'){
         return ({
@@ -36,7 +30,9 @@ module.exports = ({ env }) => {{
             },
             'users-permissions': {
               config: {
-                jwtSecret: env(crypto.randomBytes(16).toString('base64')),
+                jwtSecret: CryptoJS.MD5('swatchBack2.0', { outputLength: 16 }).toString(
+                  CryptoJS.enc.Base64
+                ),
               },
             },
         })
