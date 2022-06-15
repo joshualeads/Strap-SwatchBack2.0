@@ -1,4 +1,11 @@
 module.exports = ({ env }) => {{
+  
+    let crypto;
+    try {
+      crypto = require('node:crypto');
+    } catch (err) {
+      console.log('crypto support is disabled!');
+    }
 
     if(env('NODE_ENV') === 'production'){
         return ({
