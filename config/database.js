@@ -1,9 +1,10 @@
 const path = require('path');
 const parse = require('pg-connection-string').parse;
+
 module.exports = ({ env }) => {
   
   if(env('NODE_ENV') === 'production'){
-    const config = parse(process.env.DATABASE_URL)
+    const config = parse(process.env.DATABASE_URL);
     return {
       defaultConnection: 'default',
       connections: {
@@ -23,15 +24,15 @@ module.exports = ({ env }) => {
         }
       }
     }
-  } 
-  
-  return {
-    connection: {
-      client: 'sqlite',
+  } else {
+    return {
       connection: {
-        filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        client: 'sqlite',
+        connection: {
+          filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        },
+        useNullAsDefault: true,
       },
-      useNullAsDefault: true,
-    },
+    }
   }
 };
