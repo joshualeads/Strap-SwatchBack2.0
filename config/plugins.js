@@ -26,7 +26,12 @@ module.exports = ({ env }) => {{
                     defaultReplyTo: env('SENDGRID_DEFAULT_REPLYTO'),
                   },
                 },
-            }
+            },
+            'users-permissions': {
+              config: {
+                jwtSecret: env(crypto.randomBytes(16).toString('base64')),
+              },
+            },
         })
     }
 
