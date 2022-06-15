@@ -12,12 +12,7 @@ module.exports = ({ env }) => {{
                     params: {
                       Bucket: env('AWS_BUCKET'),
                     },
-                  },
-                  actionOptions: {
-                    upload: {},
-                    uploadStream: {},
-                    delete: {},
-                  },
+                  }
                 },
             },
             email: {
