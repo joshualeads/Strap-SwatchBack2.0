@@ -1,5 +1,5 @@
 module.exports = ({ env }) => {{
-    var CryptoJS = require('crypto-js');
+    //var CryptoJS = require('crypto-js');
 
     if(env('NODE_ENV') === 'production'){
         return ({
@@ -30,9 +30,7 @@ module.exports = ({ env }) => {{
             },
             'users-permissions': {
               config: {
-                jwtSecret: CryptoJS.MD5('swatchBack2.0_jwtsecret', { outputLength: 16 }).toString(
-                  CryptoJS.enc.Base64
-                ),
+                jwtSecret: env('JWT_SECRET'),
               }
             },
         })
